@@ -1,8 +1,7 @@
 (function() {
   'use strict';
 
-console.log('Hello, world!');
-
+  window.thoughter = window.thoughter || {};
 
 
 
