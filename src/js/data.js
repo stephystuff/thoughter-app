@@ -1,8 +1,16 @@
 (function() {
   'use strict';
 
-  console.log("hey there!");
+    window.thoughter = window.thoughter || {};
 
+    function listOfAllAuthors(allAuthors) {
+      return $.ajax({
+        url:
+        method:
+        data:
+        dataType: 
+      })
+    }
 
 
 
