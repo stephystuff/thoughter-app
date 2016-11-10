@@ -3,19 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>Test Tool</title>
-    <link href='..node_modules/mocha/mocha.css' type='text/css' rel='stylesheet'>
+    <link href='../node_modules/mocha/mocha.css' type='text/css' rel='stylesheet'>
   </head>
   <body>
 
     <main id='mocha'></main>
 
 
-    <script src='..node_modules/mocha/mocha.js'></script>
-    <script src='..node_modules/chai/chai.js'></script>
+    <script src='../node_modules/mocha/mocha.js'></script>
+    <script src='../node_modules/chai/chai.js'></script>
+    <script src='../node_modules/jquery/dist/jquery.js'></script>
     <script src='..src/js/data.js'></script>
     <script>mocha.setup('bdd');</script>
     <script src='..test/spec/thoughter.spec.js'></script>
-    <script>mocha.run();</script>
+    <script>
+    if (window.navigator.userAgent.indexOf('PhantomJS') < 0) {
+    mocha.run();
+    }
+    </script>
 
 
   </body>
