@@ -11,7 +11,7 @@
           dataType:'json',
           data:JSON.stringify({'content':newThought}),
           headers:{
-            'Content-Type': 'applications/json'
+            'Content-Type': 'application/json'
           }
       })
       .done(function successHandler(data) {

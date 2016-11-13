@@ -11,7 +11,7 @@
           dataType:'json',
           data:JSON.stringify({'content':newThought}),
           headers:{
-            'Content-Type': 'applications/json'
+            'Content-Type': 'application/json'
           }
       })
       .done(function successHandler(data) {
@@ -50,6 +50,7 @@
   $('.post-new-thought')
       .on('submit', function postThought (event) {
         event.preventDefault();
+        console.log('submit works');
         window.thoughter.createThought($('.form-control').val());
       });
 
