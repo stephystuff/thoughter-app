@@ -408,9 +408,18 @@ template {
   margin: auto 0; }
 
 .nav-pills {
-  background-color: #9a75c1; }
-
-ul {
+  background-color: #9a75c1;
   font-size: 1.3em; }
+
+.thoughts-list {
+  font-size: 1em;
+  list-style: none; }
+
+.panel-info {
+  width: 500px;
+  border: 1px solid #9a75c1;
+  padding: 25px;
+  margin-top: 10px;
+  border-radius: 5px; }
 
 /*# sourceMappingURL=styles.css.map */

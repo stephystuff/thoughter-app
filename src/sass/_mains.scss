@@ -1,29 +1,18 @@
 .nav-pills{
   background-color: #9a75c1;
-}
-
-ul {
   font-size: 1.3em;
 }
 
-// main {
-//   display: none;
-//   margin: 25px 0 0 100px;
-//   width: 700px;
-// }
+.thoughts-list{
+  font-size: 1em;
+  list-style: none;
+}
 
-// .new-thought {
-//   display: none;
-// }
-//
-// .new-thought.visible {
-//   display: block;
-// }
+.panel-info{
+  width: 500px;
+  border: 1px solid #9a75c1;
+  padding: 25px;
+  margin-top: 10px;
+  border-radius: 5px;
 
-// .panel-info {
-//   display: none;
-// }
-//
-// .panel-info.visible {
-//   display: block;
-// }
+}
