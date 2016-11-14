@@ -6,7 +6,10 @@
   $('.post-new-thought')
       .on('submit', function postThought (event) {
         event.preventDefault();
-        console.log('submit works');
         window.thoughter.createThought($('.form-control').val());
-      });
+        // .done(function changeViews (data){
+        //   window.location.hash = '#recent-thoughts';
+        // });
+    });
+
 }());
