@@ -5,6 +5,11 @@
   window.thoughter.createThought = createThought;
   window.thoughter.retrieveAllThoughts = retrieveAllThoughts;
 
+    /**
+     * Creates a new thought
+     * @param  {Object} newThought [description]
+     * @return {[type]}            [description]
+     */
     function createThought(newThought) {
       $.ajax({
           url:'https://thoughter.herokuapp.com/api/Thoughts',
@@ -23,9 +28,13 @@
       });
     }
 
+    /**
+     * Retrieves thoughts in descending order
+     * @return {Promise} The ajax call promise
+     */
     function retrieveAllThoughts(){
       return $.ajax({
-          url:'https://thoughter.herokuapp.com/api/Thoughts?filter={"order":"createTime DESC"}',
+          url:'https://thoughter.herokuapp.com/api/Thoughts?filter={"limit":10}',
           method:'GET',
           dataType: 'json'
       })
