@@ -6,9 +6,12 @@
   $('.post-new-thought')
       .on('submit', function postThought (event) {
         event.preventDefault();
-        console.log('submit works');
         window.thoughter.createThought($('.form-control').val());
-      });
+        // .done(function changeViews (data){
+        //   window.location.hash = '#recent-thoughts';
+        // });
+    });
+
 }());
 
 (function() {
@@ -18,6 +21,11 @@
   window.thoughter.createThought = createThought;
   window.thoughter.retrieveAllThoughts = retrieveAllThoughts;
 
+    /**
+     * Creates a new thought
+     * @param  {Object} newThought [description]
+     * @return {[type]}            [description]
+     */
     function createThought(newThought) {
       $.ajax({
           url:'https://thoughter.herokuapp.com/api/Thoughts',
@@ -36,9 +44,13 @@
       });
     }
 
+    /**
+     * Retrieves thoughts in descending order
+     * @return {Promise} The ajax call promise
+     */
     function retrieveAllThoughts(){
       return $.ajax({
-          url:'https://thoughter.herokuapp.com/api/Thoughts?filter={"order":"createTime DESC"}',
+          url:'https://thoughter.herokuapp.com/api/Thoughts?filter={"limit":10}',
           method:'GET',
           dataType: 'json'
       })
@@ -94,7 +106,7 @@
   function addThoughtsToRecent(thoughts) {
     thoughts.forEach(function appendThought(thought){
       $('.thoughts-list')
-          .append('<li>' + thought.content + '</li>');
+          .append('<li class="panel-info">' + thought.content + '</li>');
           // .append('<p class=".recent-thought">' + thought.content + '</p>');
     });
   }
