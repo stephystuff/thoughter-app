@@ -19,7 +19,7 @@
 
   window.thoughter = window.thoughter || {};
   window.thoughter.createThought = createThought;
-  window.thoughter.retrieveAllThoughts = retrieveAllThoughts;
+  window.thoughter.getThoughts = getThoughts;
 
     /**
      * Creates a new thought
@@ -48,14 +48,21 @@
      * Retrieves thoughts in descending order
      * @return {Promise} The ajax call promise
      */
-    function retrieveAllThoughts(){
+    function getThoughts(thought){
+      if(typeof(thought) !== 'number' || thought < 0) {
+        thought = 10;
+      }
+
       return $.ajax({
           url:'https://thoughter.herokuapp.com/api/Thoughts?filter={"limit":10}',
           method:'GET',
           dataType: 'json'
+          // data: {
+          //     limit:thought
+          // }
       })
-      .done(function successHandler(data){
-        console.log(data);
+      .done(function successHandler(thought){
+        console.log(thought);
       })
       .fail(function failHandler(xhr){
         console.log(xhr, 'attempt failed');
@@ -77,23 +84,34 @@
 (function() {
   'use strict';
 
-  window.thoughter = window.thoughter || {};
+    window.thoughter = window.thoughter || {};
 
-  $('main').hide();
-    window.addEventListener('hashchange', function() {
-      $('main').hide();
-        console.log("I'm in here!");
-      $(window.location.hash).show();
+    $(document).ready(function(){
+        if (window.location.hash === '') {
+          window.location.hash = '#recent-thoughts';
+        }
 
-      if(window.location.hash === '#recent-thoughts'){
-        window.thoughter.retrieveAllThoughts()
-        .done(function successHandler(data){
-          console.log(data, 'nav success');
-          window.thoughter.addThoughtsToRecent(data);
-        });
+        $(window).on('hashchange', viewChange);
+
+        viewChange();
+    });
+
+    function viewChange(){
+      $('section').hide();
+
+      if(window.location.hash === '#recent-thoughts') {
+        $('#recent-thoughts').show();
+        window.thoughter.getThoughts(10)
+          .done(function successHandler(thoughtData){
+            window.thoughter.addThoughtsToRecent(thoughtData);
+          });
       }
-  });
 
+      if(window.location.hash === '#new-thought') {
+        $('#recent-thoughts').hide();
+        $('#new-thought').show();
+      }
+    }
 
 }());
 
@@ -104,11 +122,19 @@
   window.thoughter.addThoughtsToRecent = addThoughtsToRecent;
 
   function addThoughtsToRecent(thoughts) {
-    thoughts.forEach(function appendThought(thought){
-      $('.thoughts-list')
-          .append('<li class="panel-info">' + thought.content + '</li>');
-          // .append('<p class=".recent-thought">' + thought.content + '</p>');
-    });
+      if(!Array.isArray(thoughts)){
+        return;
+      }
+
+      // $('.thoughts-list').html('');
+
+      thoughts.forEach(function appendThought(thought){
+        $('.list-group')
+          .append(
+           '<li class="list-group-item list-group-item-info">' + thought.createTime +
+           '<p class="list-group-item-text">' + thought.content + '</p>' + '</li>'
+          );
+      });
   }
 
 }());

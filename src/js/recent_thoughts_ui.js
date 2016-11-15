@@ -5,11 +5,19 @@
   window.thoughter.addThoughtsToRecent = addThoughtsToRecent;
 
   function addThoughtsToRecent(thoughts) {
-    thoughts.forEach(function appendThought(thought){
-      $('.thoughts-list')
-          .append('<li class="panel-info">' + thought.content + '</li>');
-          // .append('<p class=".recent-thought">' + thought.content + '</p>');
-    });
+      if(!Array.isArray(thoughts)){
+        return;
+      }
+
+      // $('.thoughts-list').html('');
+
+      thoughts.forEach(function appendThought(thought){
+        $('.list-group')
+          .append(
+           '<li class="list-group-item list-group-item-info">' + thought.createTime +
+           '<p class="list-group-item-text">' + thought.content + '</p>' + '</li>'
+          );
+      });
   }
 
 }());
