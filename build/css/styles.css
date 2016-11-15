@@ -415,4 +415,7 @@ template {
   font-size: 1em;
   list-style: none; }
 
+.panel-heading {
+  background: blue; }
+
 /*# sourceMappingURL=styles.css.map */
