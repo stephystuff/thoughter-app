@@ -23,26 +23,24 @@
       </ul>
     </nav>
 
-    <main id='recent-thoughts'>
+    <main>
 
-      <h2>Recent Thoughts</h2>
-
-      <section>
-        <ul class='thoughts-list'></ul>
+      <section id='recent-thoughts'>
+        <h2>Recent Thoughts</h2>
+        <!-- <div class='panel panel-info'></div> -->
+        <ul class='list-group' id='list-of-thoughts'></ul>
         <!-- <p class='panel-heading'>Posted at 18:07 on 11/09/16</p>
         <p class='recent-thoughts'>I am numb of all emotion right now...</p> -->
       </section>
-    </main>
 
-    <main id='new-thought'>
-      <form class='post-new-thought' action='/thought' method='POST' >
-        <h2>New Thought</h2>
-        <section class='new-thougt'>
+      <section id='new-thought'>
+        <form class='post-new-thought' action='/thought' method='POST' >
+          <h2>New Thought</h2>
           <p>What's new? Tell me about it!</p>
-            <input type='text' class='form-control' placeholder='Express yourself...'>
-            <input type='submit' class='btn btn-primary btn-large' value='Create Post'>
-        </section>
-      </form>
+          <input type='text' class='form-control' placeholder='Express yourself...'>
+          <input type='submit' class='btn btn-primary btn-large' value='Create Post'>
+        </form>
+      </section>
 
     </main>
 
