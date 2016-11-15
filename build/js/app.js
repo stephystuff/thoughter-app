@@ -22,9 +22,9 @@
   window.thoughter.getThoughts = getThoughts;
 
     /**
-     * Creates a new thought
+     * Creates a new thought and sends to server
      * @param  {Object} newThought [description]
-     * @return {[type]}            [description]
+     * @return {Promise}    The ajax call promise
      */
     function createThought(newThought) {
       $.ajax({
@@ -45,7 +45,7 @@
     }
 
     /**
-     * Retrieves thoughts in descending order
+     * Retrieves the 10 most recent thoughts
      * @return {Promise} The ajax call promise
      */
     function getThoughts(thought){
@@ -131,8 +131,8 @@
       thoughts.forEach(function appendThought(thought){
         $('.list-group')
           .append(
-           '<li class="list-group-item list-group-item-info">' + thought.createTime +
-           '<p class="list-group-item-text">' + thought.content + '</p>' + '</li>'
+           '<li class="panel panel-primary">' + '<header class="panel-heading">' + thought.createTime + '</header>' +
+           '<article class="panel-body">' + thought.content + '</article>' + '</li>'
           );
       });
   }

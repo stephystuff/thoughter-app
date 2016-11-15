@@ -6,9 +6,9 @@
   window.thoughter.getThoughts = getThoughts;
 
     /**
-     * Creates a new thought
+     * Creates a new thought and sends to server
      * @param  {Object} newThought [description]
-     * @return {[type]}            [description]
+     * @return {Promise}    The ajax call promise
      */
     function createThought(newThought) {
       $.ajax({
@@ -29,7 +29,7 @@
     }
 
     /**
-     * Retrieves thoughts in descending order
+     * Retrieves the 10 most recent thoughts
      * @return {Promise} The ajax call promise
      */
     function getThoughts(thought){

@@ -14,8 +14,8 @@
       thoughts.forEach(function appendThought(thought){
         $('.list-group')
           .append(
-           '<li class="list-group-item list-group-item-info">' + thought.createTime +
-           '<p class="list-group-item-text">' + thought.content + '</p>' + '</li>'
+           '<li class="panel panel-primary">' + '<header class="panel-heading">' + thought.createTime + '</header>' +
+           '<article class="panel-body">' + thought.content + '</article>' + '</li>'
           );
       });
   }
